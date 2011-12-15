@@ -13,6 +13,7 @@ Source0:	https://download.github.com/%{name}-oiio-Release-%{version}-0-gad1950d.
 Patch0:		OpenImageIO-0.10.2-git_backports.patch
 Patch1:		OpenImageIO-0.10.4-dl.patch
 Patch2:		OpenImageIO-0.10.2-Z_BEST_COMPRESSION.patch
+BuildRequires:	cmake
 BuildRequires:	boost-devel
 BuildRequires:	glew-devel
 BuildRequires:	qt4-devel
