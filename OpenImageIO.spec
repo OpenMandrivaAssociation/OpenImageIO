@@ -1,18 +1,16 @@
-%define		major		0.10
+%define		major		1.0
 %define		libname		%mklibname OpenImageIO %{major}
 %define		develname	%mklibname OpenImageIO -d
 
 Name:		OpenImageIO
-Version:	0.10.4
-Release:	%mkrel 1
+Version:	1.0.2
+Release:	1
 Summary:	Library for reading and writing images
 Group:		System/Libraries
 License:	BSD
 URL:		https://sites.google.com/site/openimageio/home
-Source0:	https://download.github.com/%{name}-oiio-Release-%{version}-0-gad1950d.tar.gz
-Patch0:		OpenImageIO-0.10.2-git_backports.patch
-Patch1:		OpenImageIO-0.10.4-dl.patch
-Patch2:		OpenImageIO-0.10.2-Z_BEST_COMPRESSION.patch
+Source0:	https://download.github.com/%{name}-oiio-Release-%version-0-g388f38b.tar.gz
+Patch1:		OpenImageIO-1.0.2-dl.patch
 BuildRequires:	cmake
 BuildRequires:	boost-devel
 BuildRequires:	glew-devel
@@ -58,11 +56,9 @@ Provides:	lib%{name}-devel = %{version}-%{release}
 Development files for %{name} library.
 
 %prep
-%setup -q -n %{name}-oiio-ad1950d
+%setup -q -n %{name}-oiio-388f38b
 
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%patch1 -p1 -b .dl~
 
 # Remove bundled pugixml
 rm -f src/include/pugixml.hpp \
