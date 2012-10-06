@@ -1,28 +1,29 @@
 %define		major		1.0
-%define		libname		%mklibname OpenImageIO %{major}
-%define		develname	%mklibname OpenImageIO -d
+%define		libname		%mklibname %{name} %{major}
+%define		develname	%mklibname %{name} -d
 
 Name:		OpenImageIO
-Version:	1.0.2
+Version:	1.0.9
 Release:	1
 Summary:	Library for reading and writing images
 Group:		System/Libraries
 License:	BSD
 URL:		https://sites.google.com/site/openimageio/home
-Source0:	https://download.github.com/%{name}-oiio-Release-%version-0-g388f38b.tar.gz
+Source0:	https://download.github.com/%{name}-oiio-Release-%{version}-0-g0b78dec.tar.gz
 Patch1:		OpenImageIO-1.0.2-dl.patch
 BuildRequires:	cmake
-BuildRequires:	boost-devel
-BuildRequires:	glew-devel
-BuildRequires:	qt4-devel
-BuildRequires:	OpenEXR-devel
-BuildRequires:	ilmbase-devel
-BuildRequires:	python-devel
 BuildRequires:	txt2man
-BuildRequires:	png-devel
+BuildRequires:	pkgconfig(OpenColorIO)
+BuildRequires:	pkgconfig(OpenEXR)
+BuildRequires:	pkgconfig(IlmBase)
+BuildRequires:	pkgconfig(glew)
+BuildRequires:	pkgconfig(jasper)
+BuildRequires:	pkgconfig(libpng)
+BuildRequires:	boost-devel
+BuildRequires:	qt4-devel
+BuildRequires:	python-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	zlib-devel
-BuildRequires:	jasper-devel
 BuildRequires:	pugixml-devel
 
 %description
@@ -56,7 +57,7 @@ Provides:	lib%{name}-devel = %{version}-%{release}
 Development files for %{name} library.
 
 %prep
-%setup -q -n %{name}-oiio-388f38b
+%setup -q -n %{name}-oiio-0d48631
 
 %patch1 -p1 -b .dl~
 
@@ -76,29 +77,22 @@ rm -f src/include/pugixml.hpp \
 %make
 
 %install
-%__rm -rf %{buildroot}
 %makeinstall_std -C build
 
 # Move man pages to the right directory
-%__mkdir_p %{buildroot}%{_mandir}/man1
-%__cp -a build/doc/*.1 %{buildroot}%{_mandir}/man1
-
-%clean
-%__rm -rf %{buildroot}
+mkdir -p %{buildroot}%{_mandir}/man1
+cp -a build/doc/*.1 %{buildroot}%{_mandir}/man1
 
 %files
-%defattr(-,root,root)
 %doc CHANGES LICENSE
 %{_bindir}/*
 %{python_sitearch}/OpenImageIO.so
 %{_mandir}/man1/*
 
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/libOpenImageIO.so.%{major}*
 
 %files -n %{develname}
-%defattr(-,root,root)
 %doc src/doc/*.pdf
 %{_libdir}/libOpenImageIO.so
 %{_includedir}/*
