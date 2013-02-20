@@ -4,7 +4,7 @@
 
 Name:		OpenImageIO
 Version:	1.0.9
-Release:	1
+Release:	2
 Summary:	Library for reading and writing images
 Group:		System/Libraries
 License:	BSD
