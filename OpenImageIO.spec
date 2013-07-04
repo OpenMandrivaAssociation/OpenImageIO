@@ -1,6 +1,6 @@
-%define		major		1.0
-%define		libname		%mklibname %{name} %{major}
-%define		develname	%mklibname %{name} -d
+%define major		1.0
+%define libname		%mklibname %{name} %{major}
+%define devname	%mklibname %{name} -d
 
 Name:		OpenImageIO
 Version:	1.0.9
@@ -8,23 +8,24 @@ Release:	2
 Summary:	Library for reading and writing images
 Group:		System/Libraries
 License:	BSD
-URL:		https://sites.google.com/site/openimageio/home
+Url:		https://sites.google.com/site/openimageio/home
 Source0:	https://download.github.com/%{name}-oiio-Release-%{version}-0-g0b78dec.tar.gz
-Patch1:		OpenImageIO-1.0.2-dl.patch
+Patch1:	OpenImageIO-1.0.2-dl.patch
 BuildRequires:	cmake
 BuildRequires:	txt2man
+BuildRequires:	boost-devel
+BuildRequires:	pugixml-devel
+BuildRequires:	qt4-devel
+BuildRequires:	tiff-devel
 BuildRequires:	pkgconfig(OpenColorIO)
 BuildRequires:	pkgconfig(OpenEXR)
 BuildRequires:	pkgconfig(IlmBase)
 BuildRequires:	pkgconfig(glew)
+BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(jasper)
 BuildRequires:	pkgconfig(libpng)
-BuildRequires:	boost-devel
-BuildRequires:	qt4-devel
-BuildRequires:	python-devel
-BuildRequires:	libtiff-devel
-BuildRequires:	zlib-devel
-BuildRequires:	pugixml-devel
+BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(zlib)
 
 %description
 OpenImageIO is a library for reading and writing images, and a bunch of related
@@ -46,33 +47,32 @@ Group:		System/Libraries
 %description -n %{libname}
 OpenImageIO is a library for reading and writing images.
 
-%package -n %{develname}
+%package -n %{devname}
 Summary:	Development files for %{name}
 Group:		Development/C++
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
-Provides:	lib%{name}-devel = %{version}-%{release}
 
-%description -n %{develname}
+%description -n %{devname}
 Development files for %{name} library.
 
 %prep
-%setup -q -n %{name}-oiio-0d48631
-
-%patch1 -p1 -b .dl~
+%setup -qn %{name}-oiio-0d48631
+%apply_patches
 
 # Remove bundled pugixml
 rm -f src/include/pugixml.hpp \
-      src/include/pugiconfig.hpp \
-      src/libutil/pugixml.cpp
+	src/include/pugiconfig.hpp \
+	src/libutil/pugixml.cpp
 
 %build
-%cmake -DCMAKE_SKIP_RPATH:BOOL=TRUE \
-       -DPYLIB_INSTALL_DIR:PATH=%{python_sitearch} \
-       -DINCLUDE_INSTALL_DIR:PATH=/usr/include/%{name} \
-       -DINSTALL_DOCS:BOOL=OFF \
-       -DUSE_EXTERNAL_PUGIXML:BOOL=ON \
-       ../src
+%cmake \
+	-DCMAKE_SKIP_RPATH:BOOL=TRUE \
+	-DPYLIB_INSTALL_DIR:PATH=%{python_sitearch} \
+	-DINCLUDE_INSTALL_DIR:PATH=/usr/include/%{name} \
+	-DINSTALL_DOCS:BOOL=OFF \
+	-DUSE_EXTERNAL_PUGIXML:BOOL=ON \
+	../src
 
 %make
 
@@ -92,7 +92,7 @@ cp -a build/doc/*.1 %{buildroot}%{_mandir}/man1
 %files -n %{libname}
 %{_libdir}/libOpenImageIO.so.%{major}*
 
-%files -n %{develname}
+%files -n %{devname}
 %doc src/doc/*.pdf
 %{_libdir}/libOpenImageIO.so
 %{_includedir}/*
