@@ -1,16 +1,16 @@
-%define major		1.0
-%define libname		%mklibname %{name} %{major}
+%define major	1.0
+%define libname	%mklibname %{name} %{major}
 %define devname	%mklibname %{name} -d
 
+Summary:	Library for reading and writing images
 Name:		OpenImageIO
 Version:	1.0.9
 Release:	2
-Summary:	Library for reading and writing images
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
 Source0:	https://download.github.com/%{name}-oiio-Release-%{version}-0-g0b78dec.tar.gz
-Patch1:	OpenImageIO-1.0.2-dl.patch
+Patch1:		OpenImageIO-1.0.2-dl.patch
 BuildRequires:	cmake
 BuildRequires:	txt2man
 BuildRequires:	boost-devel
