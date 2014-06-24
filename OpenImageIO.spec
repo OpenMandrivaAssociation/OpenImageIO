@@ -1,6 +1,6 @@
-%define major	1.0
-%define libname	%mklibname %{name} %{major}
-%define devname	%mklibname %{name} -d
+%define major 1.0
+%define libname %mklibname %{name} %{major}
+%define devname %mklibname %{name} -d
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
@@ -96,4 +96,3 @@ cp -a build/doc/*.1 %{buildroot}%{_mandir}/man1
 %doc src/doc/*.pdf
 %{_libdir}/libOpenImageIO.so
 %{_includedir}/*
-
