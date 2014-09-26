@@ -1,16 +1,17 @@
-%define major 1.0
+%define major 1.4
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
+%define utillibname %mklibname %{name}_Util %{major}
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	1.0.9
-Release:	10
+Version:	1.4.13
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
-Source0:	https://download.github.com/%{name}-oiio-Release-%{version}-0-g0b78dec.tar.gz
-Patch1:		OpenImageIO-1.0.2-dl.patch
+Source0:	https://download.github.com/oiio-Release-%{version}.tar.gz
+Patch0:		OpenImageIO-1.4.13-dl.patch
 BuildRequires:	cmake
 BuildRequires:	txt2man
 BuildRequires:	boost-devel
@@ -47,17 +48,25 @@ Group:		System/Libraries
 %description -n %{libname}
 OpenImageIO is a library for reading and writing images.
 
+%package -n %{utillibname}
+Summary:        A library for reading and writing images
+Group:          System/Libraries
+
+%description -n %{utillibname}
+OpenImageIO is a library for reading and writing images.
+
 %package -n %{devname}
 Summary:	Development files for %{name}
 Group:		Development/C++
 Requires:	%{libname} = %{version}-%{release}
+Requires:	%{utillibname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 
 %description -n %{devname}
 Development files for %{name} library.
 
 %prep
-%setup -qn %{name}-oiio-0d48631
+%setup -qn oiio-Release-%{version}
 %apply_patches
 
 # Remove bundled pugixml
@@ -71,8 +80,9 @@ rm -f src/include/pugixml.hpp \
 	-DPYLIB_INSTALL_DIR:PATH=%{python_sitearch} \
 	-DINCLUDE_INSTALL_DIR:PATH=/usr/include/%{name} \
 	-DINSTALL_DOCS:BOOL=OFF \
+	-DSTOP_ON_WARNING=OFF \
 	-DUSE_EXTERNAL_PUGIXML:BOOL=ON \
-	../src
+	../
 
 %make
 
@@ -81,7 +91,7 @@ rm -f src/include/pugixml.hpp \
 
 # Move man pages to the right directory
 mkdir -p %{buildroot}%{_mandir}/man1
-cp -a build/doc/*.1 %{buildroot}%{_mandir}/man1
+cp -a build/src/doc/*.1 %{buildroot}%{_mandir}/man1
 
 %files
 %doc CHANGES LICENSE
@@ -92,7 +102,11 @@ cp -a build/doc/*.1 %{buildroot}%{_mandir}/man1
 %files -n %{libname}
 %{_libdir}/libOpenImageIO.so.%{major}*
 
+%files -n %{utillibname}
+%{_libdir}/libOpenImageIO_Util.so.%{major}*
+
 %files -n %{devname}
 %doc src/doc/*.pdf
 %{_libdir}/libOpenImageIO.so
+%{_libdir}/libOpenImageIO_Util.so
 %{_includedir}/*
