@@ -6,7 +6,7 @@
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
 Version:	1.4.13
-Release:	1
+Release:	2
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
@@ -44,6 +44,7 @@ classes, utilities, and applications. Main features include:
 %package -n %{libname}
 Summary:	A library for reading and writing images
 Group:		System/Libraries
+%rename		%{_lib}OpenImageIO1.0
 
 %description -n %{libname}
 OpenImageIO is a library for reading and writing images.
