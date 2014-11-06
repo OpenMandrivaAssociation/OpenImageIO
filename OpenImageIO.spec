@@ -5,8 +5,8 @@
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	1.4.13
-Release:	3
+Version:	1.4.14
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
@@ -69,11 +69,15 @@ Development files for %{name} library.
 %prep
 %setup -qn oiio-Release-%{version}
 %apply_patches
+sed -i -e '/list.*APPEND.*cli_tools.*iv/d' src/doc/CMakeLists.txt
 
 # Remove bundled pugixml
 rm -f src/include/pugixml.hpp \
 	src/include/pugiconfig.hpp \
 	src/libutil/pugixml.cpp
+
+# Remove bundled tbb
+rm -rf src/include/tbb
 
 %build
 %cmake \
