@@ -1,12 +1,12 @@
-%define major 1.4
+%define major 1.5
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
 %define utillibname %mklibname %{name}_Util %{major}
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	1.4.14
-Release:	4
+Version:	1.5.14
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
