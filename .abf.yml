@@ -1,4 +1,5 @@
 removed_sources:
   oiio-Release-1.4.14.tar.gz: 09fbc013e59ef23f7849ee4fe76f9979c7edf60e
-sources:
   oiio-Release-1.5.14.tar.gz: c828fb0845c616d3df78f199c014e9e3b1764db2
+sources:
+  oiio-Release-1.5.18.tar.gz: 0ba28ab50c5a9a23ab6cd4694d766f0aefaf7d37
