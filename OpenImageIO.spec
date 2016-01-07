@@ -5,7 +5,7 @@
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	1.5.18
+Version:	1.5.23
 Release:	1
 Group:		System/Libraries
 License:	BSD
