@@ -1,11 +1,12 @@
-%define major 1.5
+%define major 1.6
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
 %define utillibname %mklibname %{name}_Util %{major}
+%define _disable_lto 1
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	1.5.23
+Version:	1.6.11
 Release:	1
 Group:		System/Libraries
 License:	BSD
@@ -101,6 +102,7 @@ cp -a build/src/doc/*.1 %{buildroot}%{_mandir}/man1
 %files
 %doc CHANGES LICENSE
 %{_bindir}/*
+%{_xfontdir}/oiio
 %{python_sitearch}/OpenImageIO.so
 %{_mandir}/man1/*
 
