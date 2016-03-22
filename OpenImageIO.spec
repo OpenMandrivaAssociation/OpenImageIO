@@ -81,6 +81,13 @@ rm -f src/include/pugixml.hpp \
 rm -rf src/include/tbb
 
 %build
+
+# clang segfaults on i586
+%ifarch %{ix86}
+export CC=gcc
+export CXX=g++
+%endif
+
 %cmake \
 	-DCMAKE_SKIP_RPATH:BOOL=TRUE \
 	-DPYLIB_INSTALL_DIR:PATH=%{python_sitearch} \
