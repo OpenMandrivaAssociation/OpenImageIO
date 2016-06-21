@@ -16,7 +16,7 @@ Patch0:		OpenImageIO-1.4.13-dl.patch
 BuildRequires:	cmake
 BuildRequires:	txt2man
 BuildRequires:	boost-devel
-BuildRequires:	boost-core-devel
+BuildRequires:	boost-align-devel
 BuildRequires:	pugixml-devel
 BuildRequires:	qt4-devel
 BuildRequires:	tiff-devel
