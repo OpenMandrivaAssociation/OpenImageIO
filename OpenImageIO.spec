@@ -17,6 +17,7 @@ BuildRequires:	cmake
 BuildRequires:	txt2man
 BuildRequires:	boost-devel
 BuildRequires:	boost-align-devel
+BuildRequires:	boost-core-devel
 BuildRequires:	pugixml-devel
 BuildRequires:	qt4-devel
 BuildRequires:	tiff-devel
