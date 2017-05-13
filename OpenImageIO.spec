@@ -1,4 +1,4 @@
-%define major 1.6
+%define major 1.7
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
 %define utillibname %mklibname %{name}_Util %{major}
@@ -6,12 +6,12 @@
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	1.6.18
-Release:	2
+Version:	1.7.14
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
-Source0:	https://download.github.com/oiio-Release-%{version}.tar.gz
+Source0:	https://github.com/OpenImageIO/oiio/archive/Release-%{version}.tar.gz
 Patch0:		OpenImageIO-1.4.13-dl.patch
 BuildRequires:	cmake
 BuildRequires:	txt2man
@@ -109,7 +109,7 @@ mkdir -p %{buildroot}%{_mandir}/man1
 cp -a build/src/doc/*.1 %{buildroot}%{_mandir}/man1
 
 %files
-%doc CHANGES LICENSE
+%doc LICENSE
 %{_bindir}/*
 %{_xfontdir}/oiio
 %{python_sitearch}/OpenImageIO.so

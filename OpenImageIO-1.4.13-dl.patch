@@ -1,17 +1,17 @@
---- oiio-Release-1.2.0/src/libOpenImageIO/CMakeLists.txt~	2013-07-15 22:08:32.907370256 +0800
-+++ oiio-Release-1.2.0/src/libOpenImageIO/CMakeLists.txt	2013-07-15 22:09:31.859060898 +0800
-@@ -208,7 +208,7 @@
+--- oiio-Release-1.7.14/src/libOpenImageIO/CMakeLists.txt.0000~	2017-05-13 14:00:51.537576735 +0200
++++ oiio-Release-1.7.14/src/libOpenImageIO/CMakeLists.txt	2017-05-13 14:11:14.904015803 +0200
+@@ -97,7 +97,7 @@ if (BUILDSTATIC)
  else ()
      add_library (OpenImageIO SHARED ${libOpenImageIO_srcs})
  endif ()
 -target_link_libraries (OpenImageIO
 +target_link_libraries (OpenImageIO ${CMAKE_DL_LIBS}
-                            ${VISIBILITY_COMMAND} ${VISIBILITY_MAP_COMMAND}
-                            ${Boost_LIBRARIES})
- 
---- ./src/libutil/CMakeLists.txt.orig	2014-09-26 05:54:15.480626247 +0100
-+++ ./src/libutil/CMakeLists.txt	2014-09-26 05:54:27.506625361 +0100
-@@ -9,7 +9,7 @@
+                        ${VISIBILITY_COMMAND} ${VISIBILITY_MAP_COMMAND}
+                        ${format_plugin_libs} # Add all the target link libraries from the plugins
+                        ${Boost_LIBRARIES})
+--- oiio-Release-1.7.14/src/libutil/CMakeLists.txt.0000~	2017-05-01 19:21:17.000000000 +0200
++++ oiio-Release-1.7.14/src/libutil/CMakeLists.txt	2017-05-13 14:00:51.538576743 +0200
+@@ -9,7 +9,7 @@ if (BUILDSTATIC)
  else ()
      add_library (OpenImageIO_Util SHARED ${libOpenImageIO_Util_srcs})
  endif ()
