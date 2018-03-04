@@ -1,4 +1,4 @@
-%define major 1.7
+%define major 1.8
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
 %define utillibname %mklibname %{name}_Util %{major}
@@ -6,7 +6,7 @@
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	1.7.15
+Version:	1.8.9
 Release:	1
 Group:		System/Libraries
 License:	BSD
@@ -28,7 +28,7 @@ BuildRequires:	pkgconfig(glew)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(jasper)
 BuildRequires:	pkgconfig(libpng)
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(zlib)
 
 %description
@@ -92,11 +92,12 @@ export CXX=g++
 
 %cmake \
 	-DCMAKE_SKIP_RPATH:BOOL=TRUE \
-	-DPYLIB_INSTALL_DIR:PATH=%{python_sitearch} \
+	-DPYLIB_INSTALL_DIR:PATH=%{python3_sitearch} \
 	-DINCLUDE_INSTALL_DIR:PATH=/usr/include/%{name} \
 	-DINSTALL_DOCS:BOOL=OFF \
 	-DSTOP_ON_WARNING=OFF \
 	-DUSE_EXTERNAL_PUGIXML:BOOL=ON \
+	-DPYTHON_VERSION=%{py3ver} \
 	../
 
 %make
@@ -104,16 +105,11 @@ export CXX=g++
 %install
 %makeinstall_std -C build
 
-# Move man pages to the right directory
-mkdir -p %{buildroot}%{_mandir}/man1
-cp -a build/src/doc/*.1 %{buildroot}%{_mandir}/man1
-
 %files
 %doc LICENSE
 %{_bindir}/*
-%{_xfontdir}/oiio
-%{python_sitearch}/OpenImageIO.so
-%{_mandir}/man1/*
+%{_xfontdir}/%{name}
+%{python3_sitearch}/OpenImageIO.so
 
 %files -n %{libname}
 %{_libdir}/libOpenImageIO.so.%{major}*
