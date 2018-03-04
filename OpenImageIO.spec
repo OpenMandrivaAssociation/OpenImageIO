@@ -92,7 +92,7 @@ export CXX=g++
 
 %cmake \
 	-DCMAKE_SKIP_RPATH:BOOL=TRUE \
-	-DPYLIB_INSTALL_DIR:PATH=%{python3_sitearch} -DPYTHON_VERSION=%{py3ver} \
+	-DPYLIB_INSTALL_DIR:PATH=%{python3_sitearch} -DPYTHON_VERSION=%{py3_ver} \
 	-DINCLUDE_INSTALL_DIR:PATH=/usr/include/%{name} \
 	-DINSTALL_DOCS:BOOL=OFF \
 	-DSTOP_ON_WARNING=OFF \
