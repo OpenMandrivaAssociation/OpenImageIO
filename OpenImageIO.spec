@@ -19,7 +19,8 @@ BuildRequires:	boost-devel
 BuildRequires:	boost-align-devel
 BuildRequires:	boost-core-devel
 BuildRequires:	pugixml-devel
-BuildRequires:	qt4-devel
+BuildRequires:	qt5-devel
+BuildRequires:	extra-cmake-modules
 BuildRequires:	tiff-devel
 BuildRequires:	pkgconfig(OpenColorIO)
 BuildRequires:	pkgconfig(OpenEXR)
