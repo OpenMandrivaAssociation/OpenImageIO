@@ -21,6 +21,7 @@ BuildRequires:	boost-align-devel
 BuildRequires:	boost-core-devel
 BuildRequires:	pugixml-devel
 BuildRequires:	qt5-devel
+BuildRequires:	qt5-platformtheme-gtk3
 BuildRequires:	extra-cmake-modules
 BuildRequires:	tiff-devel
 BuildRequires:	pkgconfig(OpenColorIO)
