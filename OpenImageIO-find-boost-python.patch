@@ -1,0 +1,16 @@
+diff -up oiio-Release-1.8.11/src/python/CMakeLists.txt.omv~ oiio-Release-1.8.11/src/python/CMakeLists.txt
+--- oiio-Release-1.8.11/src/python/CMakeLists.txt.omv~	2018-05-21 00:38:04.111734461 +0200
++++ oiio-Release-1.8.11/src/python/CMakeLists.txt	2018-05-21 00:40:02.127000345 +0200
+@@ -16,9 +16,10 @@ find_package (PythonLibs ${PYTHON_VERSIO
+ if (NOT BOOST_CUSTOM)
+     # Finding the python component for boost is a little tricky, since it has
+     # different names on different systems. Try the most common ones.
+-    foreach (_py_lib python-${PYTHON_VERSION_FOUND} python
++    foreach (_py_lib python-${PYTHON_VERSION_FOUND}
++             python${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR}
+              python${PYTHON_VERSION_MAJOR}
+-             python-py${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR})
++             python-py${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR} python)
+         find_package (Boost QUIET COMPONENTS ${_py_lib})
+         string (TOUPPER ${_py_lib} _py_lib_name)
+         if (Boost_${_py_lib_name}_FOUND)

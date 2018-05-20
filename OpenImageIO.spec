@@ -6,13 +6,14 @@
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	1.8.9
-Release:	2
+Version:	1.8.11
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
 Source0:	https://github.com/OpenImageIO/oiio/archive/Release-%{version}.tar.gz
 Patch0:		OpenImageIO-1.4.13-dl.patch
+Patch1:		OpenImageIO-find-boost-python.patch
 BuildRequires:	cmake
 BuildRequires:	txt2man
 BuildRequires:	boost-devel
@@ -71,8 +72,7 @@ Provides:	%{name}-devel = %{version}-%{release}
 Development files for %{name} library.
 
 %prep
-%setup -qn oiio-Release-%{version}
-%apply_patches
+%autosetup -p1 -n oiio-Release-%{version}
 sed -i -e '/list.*APPEND.*cli_tools.*iv/d' src/doc/CMakeLists.txt
 
 # Remove bundled pugixml
@@ -84,13 +84,6 @@ rm -f src/include/pugixml.hpp \
 rm -rf src/include/tbb
 
 %build
-
-# clang segfaults on i586
-%ifarch %{ix86}
-export CC=gcc
-export CXX=g++
-%endif
-
 %cmake \
 	-DCMAKE_SKIP_RPATH:BOOL=TRUE \
 	-DPYLIB_INSTALL_DIR:PATH=%{python3_sitearch} -DPYTHON_VERSION=%{py3_ver} \
