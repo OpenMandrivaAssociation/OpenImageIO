@@ -33,6 +33,7 @@ BuildRequires:	pkgconfig(jasper)
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(zlib)
+BuildRequires:	pkgconfig(libjpeg)
 
 %description
 OpenImageIO is a library for reading and writing images, and a bunch of related
