@@ -1,19 +1,18 @@
-%define major 1.8
+%define major 2.0
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
 %define utillibname %mklibname %{name}_Util %{major}
-%define _disable_lto 1
+#define _disable_lto 1
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	1.8.14
-Release:	2
+Version:	2.0.6
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
 Source0:	https://github.com/OpenImageIO/oiio/archive/Release-%{version}.tar.gz
 Patch0:		OpenImageIO-1.4.13-dl.patch
-Patch1:		OpenImageIO-find-boost-python.patch
 BuildRequires:	cmake
 BuildRequires:	txt2man
 BuildRequires:	boost-devel
@@ -108,7 +107,6 @@ export CXX=g++
 %makeinstall_std -C build
 
 %files
-%doc LICENSE
 %{_bindir}/*
 %{_xfontdir}/%{name}
 %{python3_sitearch}/OpenImageIO.so
@@ -124,3 +122,5 @@ export CXX=g++
 %{_libdir}/libOpenImageIO.so
 %{_libdir}/libOpenImageIO_Util.so
 %{_includedir}/*
+%{_libdir}/pkgconfig/OpenImageIO.pc
+%{_datadir}/cmake/Modules/FindOpenImageIO.cmake
