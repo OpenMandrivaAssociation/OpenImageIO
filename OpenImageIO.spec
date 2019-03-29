@@ -23,6 +23,7 @@ BuildRequires:	qt5-devel
 BuildRequires:	qt5-platformtheme-gtk3
 BuildRequires:	extra-cmake-modules
 BuildRequires:	tiff-devel
+BuildRequires:	git-core
 BuildRequires:	pkgconfig(OpenColorIO)
 BuildRequires:	pkgconfig(OpenEXR)
 BuildRequires:	pkgconfig(IlmBase)
@@ -33,6 +34,12 @@ BuildRequires:	pkgconfig(libpng)
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(libjpeg)
+BuildRequires:	pkgconfig(bzip2)
+BuildRequires:	pkgconfig(libwebp)
+BuildRequires:	pkgconfig(freetype2)
+BuildRequires:	pkgconfig(libopenjp2)
+BuildRequires:	pkgconfig(libavcodec)
+BuildRequires:	pkgconfig(libavformat)
 
 %description
 OpenImageIO is a library for reading and writing images, and a bunch of related
@@ -99,6 +106,7 @@ export CXX=g++
 	-DINSTALL_DOCS:BOOL=OFF \
 	-DSTOP_ON_WARNING=OFF \
 	-DUSE_EXTERNAL_PUGIXML:BOOL=ON \
+	-DOpenGL_GL_PREFERENCE=GLVND \
 	../
 
 %make
