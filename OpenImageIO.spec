@@ -3,7 +3,7 @@
 %define devname %mklibname %{name} -d
 %define utillibname %mklibname %{name}_Util %{major}
 #define _disable_lto 1
-%bcond_with	minimal
+%bcond_without	full
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
@@ -30,7 +30,7 @@ BuildRequires:	pkgconfig(libjpeg)
 BuildRequires:	pkgconfig(bzip2)
 BuildRequires:	pkgconfig(libwebp)
 BuildRequires:	pkgconfig(freetype2)
-%if !%{with minimal}
+%if %{with full}
 BuildRequires:	qt5-devel
 BuildRequires:	qt5-platformtheme-gtk3
 BuildRequires:	extra-cmake-modules
