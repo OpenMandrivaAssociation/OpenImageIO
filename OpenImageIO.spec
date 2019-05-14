@@ -3,6 +3,7 @@
 %define devname %mklibname %{name} -d
 %define utillibname %mklibname %{name}_Util %{major}
 #define _disable_lto 1
+%bcond_with	minimal
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
@@ -19,27 +20,29 @@ BuildRequires:	boost-devel
 BuildRequires:	boost-align-devel
 BuildRequires:	boost-core-devel
 BuildRequires:	pugixml-devel
-BuildRequires:	qt5-devel
-BuildRequires:	qt5-platformtheme-gtk3
-BuildRequires:	extra-cmake-modules
 BuildRequires:	tiff-devel
 BuildRequires:	git-core
-BuildRequires:	pkgconfig(OpenColorIO)
-BuildRequires:	pkgconfig(OpenEXR)
-BuildRequires:	pkgconfig(IlmBase)
-BuildRequires:	pkgconfig(glew)
-BuildRequires:	pkgconfig(glu)
-BuildRequires:	pkgconfig(jasper)
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	pkgconfig(python3)
+BuildRequires:	pkgconfig(OpenEXR)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(libjpeg)
 BuildRequires:	pkgconfig(bzip2)
 BuildRequires:	pkgconfig(libwebp)
 BuildRequires:	pkgconfig(freetype2)
+%if !%{with minimal}
+BuildRequires:	qt5-devel
+BuildRequires:	qt5-platformtheme-gtk3
+BuildRequires:	extra-cmake-modules
+BuildRequires:	pkgconfig(OpenColorIO)
+BuildRequires:	pkgconfig(IlmBase)
+BuildRequires:	pkgconfig(glew)
+BuildRequires:	pkgconfig(glu)
+BuildRequires:	pkgconfig(jasper)
 BuildRequires:	pkgconfig(libopenjp2)
 BuildRequires:	pkgconfig(libavcodec)
 BuildRequires:	pkgconfig(libavformat)
+%endif
 
 %description
 OpenImageIO is a library for reading and writing images, and a bunch of related
