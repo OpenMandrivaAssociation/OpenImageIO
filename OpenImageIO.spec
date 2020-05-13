@@ -129,7 +129,6 @@ export CXX=g++
 %{_libdir}/libOpenImageIO_Util.so.%{major}*
 
 %files -n %{devname}
-%doc src/doc/*.pdf
 %{_libdir}/libOpenImageIO.so
 %{_libdir}/libOpenImageIO_Util.so
 %{_includedir}/*
