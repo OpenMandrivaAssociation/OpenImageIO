@@ -1,4 +1,4 @@
-%define major 2.0
+%define major 2.1
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
 %define utillibname %mklibname %{name}_Util %{major}
@@ -7,13 +7,13 @@
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	2.0.10
-Release:	3
+Version:	2.1.15.0
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
-Source0:	https://github.com/OpenImageIO/oiio/archive/Release-%{version}.tar.gz
-Patch0:		OpenImageIO-1.4.13-dl.patch
+Source0:	https://github.com/OpenImageIO/oiio/archive/oiio-Release-%{version}.tar.gz
+#Patch0:		OpenImageIO-1.4.13-dl.patch
 BuildRequires:	cmake
 BuildRequires:	txt2man
 BuildRequires:	boost-devel
@@ -23,7 +23,7 @@ BuildRequires:	pugixml-devel
 BuildRequires:	tiff-devel
 BuildRequires:	git-core
 BuildRequires:	pkgconfig(libpng)
-BuildRequires:	pkgconfig(python3)
+BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(OpenEXR)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(libjpeg)
@@ -98,8 +98,8 @@ rm -rf src/include/tbb
 %ifarch %{ix86}
 # Because of incompatibility between boost-atomic 1.67 headers and clang 7.0:
 # /usr/include/boost/atomic/detail/ops_gcc_x86_dcas.hpp:163:21: error: address argument to atomic builtin cannot be const-qualified
-export CC=gcc
-export CXX=g++
+#export CC=gcc
+#export CXX=g++
 %endif
 
 %cmake \
@@ -112,10 +112,10 @@ export CXX=g++
 	-DOpenGL_GL_PREFERENCE=GLVND \
 	../
 
-%make
+%make_build
 
 %install
-%makeinstall_std -C build
+%make_install -C build
 
 %files
 %{_bindir}/*
@@ -129,7 +129,6 @@ export CXX=g++
 %{_libdir}/libOpenImageIO_Util.so.%{major}*
 
 %files -n %{devname}
-%doc src/doc/*.pdf
 %{_libdir}/libOpenImageIO.so
 %{_libdir}/libOpenImageIO_Util.so
 %{_includedir}/*
