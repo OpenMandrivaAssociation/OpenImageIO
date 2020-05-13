@@ -1,4 +1,4 @@
-%define major 2.0
+%define major 2.1
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
 %define utillibname %mklibname %{name}_Util %{major}
@@ -23,7 +23,7 @@ BuildRequires:	pugixml-devel
 BuildRequires:	tiff-devel
 BuildRequires:	git-core
 BuildRequires:	pkgconfig(libpng)
-BuildRequires:	pkgconfig(python3)
+BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(OpenEXR)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(libjpeg)
