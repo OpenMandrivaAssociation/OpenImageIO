@@ -133,4 +133,5 @@ rm -rf src/include/tbb
 %{_libdir}/libOpenImageIO_Util.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/OpenImageIO.pc
+%{_libdir}/cmake/OpenImageIO/*
 %{_datadir}/cmake/Modules/FindOpenImageIO.cmake
