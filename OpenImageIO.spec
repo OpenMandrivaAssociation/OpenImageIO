@@ -7,12 +7,12 @@
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	2.0.10
-Release:	3
+Version:	2.1.15.0
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
-Source0:	https://github.com/OpenImageIO/oiio/archive/Release-%{version}.tar.gz
+Source0:	https://github.com/OpenImageIO/oiio/archive/oiio-Release-%{version}.tar.gz
 Patch0:		OpenImageIO-1.4.13-dl.patch
 BuildRequires:	cmake
 BuildRequires:	txt2man
@@ -112,10 +112,10 @@ export CXX=g++
 	-DOpenGL_GL_PREFERENCE=GLVND \
 	../
 
-%make
+%make_build
 
 %install
-%makeinstall_std -C build
+%make_install -C build
 
 %files
 %{_bindir}/*
