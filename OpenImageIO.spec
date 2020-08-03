@@ -7,13 +7,13 @@
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	2.1.17.0
+Version:	2.1.18.1
 Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
 Source0:	https://github.com/OpenImageIO/oiio/archive/oiio-Release-%{version}.tar.gz
-#Patch0:		OpenImageIO-1.4.13-dl.patch
+
 BuildRequires:	cmake
 BuildRequires:	txt2man
 BuildRequires:	boost-devel
