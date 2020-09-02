@@ -30,6 +30,7 @@ BuildRequires:	pkgconfig(libjpeg)
 BuildRequires:	pkgconfig(bzip2)
 BuildRequires:	pkgconfig(libwebp)
 BuildRequires:	pkgconfig(freetype2)
+BuildRequires:  pkgconfig(libunwind-llvm)
 %if %{with full}
 BuildRequires:	qt5-devel
 BuildRequires:	qt5-platformtheme-gtk3
