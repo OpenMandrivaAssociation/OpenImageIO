@@ -15,6 +15,7 @@ Url:		https://sites.google.com/site/openimageio/home
 Source0:	https://github.com/OpenImageIO/oiio/archive/oiio-Release-%{version}.tar.gz
 
 BuildRequires:	cmake
+BuildRequires:  cmake(pybind11)
 BuildRequires:	txt2man
 BuildRequires:	boost-devel
 BuildRequires:	boost-align-devel
