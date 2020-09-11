@@ -39,6 +39,12 @@ BuildRequires:  pkgconfig(libunwind-llvm)
 BuildRequires:	qt5-devel
 BuildRequires:	qt5-platformtheme-gtk3
 BuildRequires:	extra-cmake-modules
+BuildRequires:	pkgconfig(yaml-cpp)
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5OpenGL)
+BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(OpenColorIO)
 BuildRequires:	pkgconfig(IlmBase)
 BuildRequires:	pkgconfig(glew)
@@ -109,6 +115,7 @@ export CXX=g++
 %endif
 
 %cmake \
+	-Wno-dev \
 	-DCMAKE_SKIP_RPATH:BOOL=TRUE \
 	-DPYLIB_INSTALL_DIR:PATH=%{python3_sitearch} -DPYTHON_VERSION=%{py3_ver} \
 	-DINCLUDE_INSTALL_DIR:PATH=/usr/include/%{name} \
