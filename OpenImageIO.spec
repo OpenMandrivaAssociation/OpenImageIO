@@ -15,6 +15,7 @@ Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
 Source0:	https://github.com/OpenImageIO/oiio/archive/oiio-Release-%{version}.tar.gz
+Patch0:		2698.patch
 
 BuildRequires:	cmake
 BuildRequires:  cmake(pybind11)
@@ -99,12 +100,12 @@ rm -f src/include/pugixml.hpp \
 rm -rf src/include/tbb
 
 %build
-#ifarch %{ix86}
+%ifarch %{ix86}
 # Because of incompatibility between boost-atomic 1.67 headers and clang 7.0:
 # /usr/include/boost/atomic/detail/ops_gcc_x86_dcas.hpp:163:21: error: address argument to atomic builtin cannot be const-qualified
 export CC=gcc
 export CXX=g++
-#endif
+%endif
 
 %cmake \
 	-DCMAKE_SKIP_RPATH:BOOL=TRUE \
