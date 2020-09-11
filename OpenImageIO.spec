@@ -42,6 +42,7 @@ BuildRequires:	extra-cmake-modules
 BuildRequires:	pkgconfig(OpenColorIO)
 BuildRequires:	pkgconfig(IlmBase)
 BuildRequires:	pkgconfig(glew)
+BuildRequires:  pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(jasper)
 BuildRequires:	pkgconfig(libopenjp2)
