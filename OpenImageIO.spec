@@ -1,6 +1,6 @@
 %define _disable_ld_no_undefined 1
 
-%define major 2.1
+%define major 2.2
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
 %define utillibname %mklibname %{name}_Util %{major}
@@ -122,6 +122,7 @@ export CXX=g++
 	-DINSTALL_DOCS:BOOL=OFF \
 	-DSTOP_ON_WARNING=OFF \
 	-DUSE_EXTERNAL_PUGIXML:BOOL=ON \
+	-DOpenGL_GL_PREFERENCE=GLVND \
 	../
 
 %make_build
