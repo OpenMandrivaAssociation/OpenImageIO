@@ -1,13 +1,15 @@
-%define major 2.1
+%define _disable_ld_no_undefined 1
+
+%define major 2.2
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
 %define utillibname %mklibname %{name}_Util %{major}
-#define _disable_lto 1
+%define _disable_lto 1
 %bcond_without	full
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	2.1.19.0
+Version:	2.2.7.0
 Release:	1
 Group:		System/Libraries
 License:	BSD
@@ -15,6 +17,7 @@ Url:		https://sites.google.com/site/openimageio/home
 Source0:	https://github.com/OpenImageIO/oiio/archive/oiio-Release-%{version}.tar.gz
 
 BuildRequires:	cmake
+BuildRequires:  cmake(pybind11)
 BuildRequires:	txt2man
 BuildRequires:	boost-devel
 BuildRequires:	boost-align-devel
@@ -35,9 +38,16 @@ BuildRequires:  pkgconfig(libunwind-llvm)
 BuildRequires:	qt5-devel
 BuildRequires:	qt5-platformtheme-gtk3
 BuildRequires:	extra-cmake-modules
+BuildRequires:	pkgconfig(yaml-cpp)
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5OpenGL)
+BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(OpenColorIO)
 BuildRequires:	pkgconfig(IlmBase)
 BuildRequires:	pkgconfig(glew)
+BuildRequires:  pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(jasper)
 BuildRequires:	pkgconfig(libopenjp2)
@@ -104,6 +114,7 @@ export CXX=g++
 %endif
 
 %cmake \
+	-Wno-dev \
 	-DCMAKE_SKIP_RPATH:BOOL=TRUE \
 	-DPYLIB_INSTALL_DIR:PATH=%{python3_sitearch} -DPYTHON_VERSION=%{py3_ver} \
 	-DINCLUDE_INSTALL_DIR:PATH=/usr/include/%{name} \
