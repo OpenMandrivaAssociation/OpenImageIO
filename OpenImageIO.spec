@@ -15,7 +15,6 @@ Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
 Source0:	https://github.com/OpenImageIO/oiio/archive/oiio-Release-%{version}.tar.gz
-Patch0:		2698.patch
 
 BuildRequires:	cmake
 BuildRequires:  cmake(pybind11)
