@@ -4,7 +4,7 @@
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
 %define utillibname %mklibname %{name}_Util %{major}
-%define _disable_lto 1
+#define _disable_lto 1
 %bcond_without	full
 
 Summary:	Library for reading and writing images
