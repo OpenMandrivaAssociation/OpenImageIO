@@ -10,11 +10,12 @@
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
 Version:	2.2.8.0
-Release:	1
+Release:	2
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
 Source0:	https://github.com/OpenImageIO/oiio/archive/oiio-Release-%{version}.tar.gz
+Patch0:		oiio-2.2.8.0-missing-include.patch
 
 BuildRequires:	cmake
 BuildRequires:  cmake(pybind11)
