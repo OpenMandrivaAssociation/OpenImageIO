@@ -9,12 +9,12 @@
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	2.2.9.0
+Version:	2.2.10.0
 Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
-Source0:	https://github.com/OpenImageIO/oiio/archive/oiio-Release-%{version}.tar.gz
+Source0:	https://github.com/OpenImageIO/oiio/archive/%{version}/oiio-%{version}.tar.gz
 Patch0:		oiio-2.2.8.0-missing-include.patch
 
 BuildRequires:	cmake
@@ -95,7 +95,7 @@ Provides:	%{name}-devel = %{version}-%{release}
 Development files for %{name} library.
 
 %prep
-%autosetup -p1 -n oiio-Release-%{version}
+%autosetup -p1 -n oiio-%{version}
 sed -i -e '/list.*APPEND.*cli_tools.*iv/d' src/doc/CMakeLists.txt
 
 # Remove bundled pugixml
