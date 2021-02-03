@@ -9,7 +9,7 @@
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	2.2.10.1
+Version:	2.2.11.1
 Release:	1
 Group:		System/Libraries
 License:	BSD
@@ -133,7 +133,8 @@ export CXX=g++
 %files
 %{_bindir}/*
 %{_xfontdir}/%{name}
-%{python3_sitearch}/OpenImageIO.so
+#{python3_sitearch}/OpenImageIO.so
+%{python3_sitearch}/OpenImageIO.cpython-*-x86_64-linux-gnu.so
 
 %files -n %{libname}
 %{_libdir}/libOpenImageIO.so.%{major}*
