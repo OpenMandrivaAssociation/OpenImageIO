@@ -134,6 +134,7 @@ export CXX=g++
 %{_bindir}/*
 %{_xfontdir}/%{name}
 #{python3_sitearch}/OpenImageIO.so
+%{python3_sitearch}/OpenImageIO.cpython-*-x86_64-linux-gnu.so
 
 %files -n %{libname}
 %{_libdir}/libOpenImageIO.so.%{major}*
