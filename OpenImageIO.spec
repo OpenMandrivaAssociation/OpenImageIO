@@ -4,18 +4,18 @@
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
 %define utillibname %mklibname %{name}_Util %{major}
-#define _disable_lto 1
 %bcond_without	full
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	2.2.13.0
+Version:	2.2.13.1
 Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
-Source0:	https://github.com/OpenImageIO/oiio/archive/%{version}/oiio-%{version}.tar.gz
+Source0:	https://github.com/OpenImageIO/oiio/archive/v%{version}/oiio-%{version}.tar.gz
 Patch0:		oiio-2.2.8.0-missing-include.patch
+Patch1:		oiio-find-current-tbb.patch
 
 BuildRequires:	cmake
 BuildRequires:  cmake(pybind11)
@@ -116,6 +116,7 @@ export CXX=g++
 
 %cmake \
 	-Wno-dev \
+	-DTBB_INCLUDE_DIR:PATH=%{_includedir}/oneapi \
 	-DCMAKE_SKIP_RPATH:BOOL=TRUE \
 	-DPYLIB_INSTALL_DIR:PATH=%{python3_sitearch} -DPYTHON_VERSION=%{py3_ver} \
 	-DINCLUDE_INSTALL_DIR:PATH=/usr/include/%{name} \
