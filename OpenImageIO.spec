@@ -9,7 +9,7 @@
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
 Version:	2.2.13.1
-Release:	1
+Release:	2
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
@@ -38,7 +38,7 @@ BuildRequires:  pkgconfig(libunwind-llvm)
 %if %{with full}
 BuildRequires:	qt5-devel
 BuildRequires:	qt5-platformtheme-gtk3
-BuildRequires:	extra-cmake-modules
+BuildRequires:	cmake(ECM)
 BuildRequires:	pkgconfig(yaml-cpp)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
