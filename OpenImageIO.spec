@@ -8,7 +8,7 @@
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	2.2.15.0
+Version:	2.2.16.0
 Release:	1
 Group:		System/Libraries
 License:	BSD
@@ -28,7 +28,7 @@ BuildRequires:	tiff-devel
 BuildRequires:	git-core
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	pkgconfig(python)
-BuildRequires:	pkgconfig(OpenEXR)
+BuildRequires:	pkgconfig(OpenEXR) < 3.0.5
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(libjpeg)
 BuildRequires:	pkgconfig(bzip2)
@@ -46,7 +46,7 @@ BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(OpenColorIO)
-BuildRequires:	pkgconfig(IlmBase)
+BuildRequires:	pkgconfig(IlmBase) < 3.0.5
 BuildRequires:	pkgconfig(glew)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
