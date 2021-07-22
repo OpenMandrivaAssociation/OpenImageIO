@@ -8,12 +8,12 @@
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	2.2.16.0
+Version:	2.3.6.0
 Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
-Source0:	https://github.com/OpenImageIO/oiio/archive/v%{version}/oiio-%{version}.tar.gz
+Source0:	https://github.com/OpenImageIO/oiio/archive/v%{version}/oiio-%{version}-dev.tar.gz
 Patch0:		oiio-2.2.8.0-missing-include.patch
 Patch1:		oiio-find-current-tbb.patch
 
@@ -28,7 +28,7 @@ BuildRequires:	tiff-devel
 BuildRequires:	git-core
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	pkgconfig(python)
-BuildRequires:	pkgconfig(OpenEXR) < 3.0.5
+BuildRequires:	pkgconfig(OpenEXR)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(libjpeg)
 BuildRequires:	pkgconfig(bzip2)
@@ -46,7 +46,7 @@ BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(OpenColorIO)
-BuildRequires:	pkgconfig(IlmBase) < 3.0.5
+BuildRequires:	pkgconfig(IlmBase)
 BuildRequires:	pkgconfig(glew)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
@@ -95,7 +95,7 @@ Provides:	%{name}-devel = %{version}-%{release}
 Development files for %{name} library.
 
 %prep
-%autosetup -p1 -n oiio-%{version}
+%autosetup -p1 -n oiio-%{version}-dev
 sed -i -e '/list.*APPEND.*cli_tools.*iv/d' src/doc/CMakeLists.txt
 
 # Remove bundled pugixml
