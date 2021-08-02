@@ -1,0 +1,14 @@
+diff -up oiio-2.3.6.0-dev/src/cmake/Config.cmake.in.omv~ oiio-2.3.6.0-dev/src/cmake/Config.cmake.in
+--- oiio-2.3.6.0-dev/src/cmake/Config.cmake.in.omv~	2021-08-03 00:59:38.632772207 +0200
++++ oiio-2.3.6.0-dev/src/cmake/Config.cmake.in	2021-08-03 01:00:01.934925571 +0200
+@@ -7,8 +7,8 @@ if (@OpenEXR_VERSION@ VERSION_GREATER_EQ
+     find_dependency(Imath @Imath_VERSION@
+                     HINTS @Imath_DIR@)
+ elseif (@OpenEXR_VERSION@ VERSION_GREATER_EQUAL 2.4 AND @FOUND_OPENEXR_WITH_CONFIG@)
+-    find_dependency(IlmBase @OpenEXR_VERSION@
+-                    HINTS @IlmBase_DIR@ @OpenEXR_DIR@)
++#    find_dependency(IlmBase @OpenEXR_VERSION@
++#                    HINTS @IlmBase_DIR@ @OpenEXR_DIR@)
+     find_dependency(OpenEXR @OpenEXR_VERSION@
+                     HINTS @OpenEXR_DIR@)
+     find_dependency(ZLIB @ZLIB_VERSION@)  # Because OpenEXR doesn't do it

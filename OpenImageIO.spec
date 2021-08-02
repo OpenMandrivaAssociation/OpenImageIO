@@ -16,6 +16,7 @@ Url:		https://sites.google.com/site/openimageio/home
 Source0:	https://github.com/OpenImageIO/oiio/archive/v%{version}/oiio-%{version}-dev.tar.gz
 Patch0:		oiio-2.2.8.0-missing-include.patch
 Patch1:		oiio-find-current-tbb.patch
+Patch2:		oiio-2.3.6-dont-confuse-cmake-depgen.patch
 
 BuildRequires:	cmake
 BuildRequires:  cmake(pybind11)
@@ -46,7 +47,6 @@ BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(OpenColorIO)
-BuildRequires:	pkgconfig(IlmBase)
 BuildRequires:	pkgconfig(glew)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
