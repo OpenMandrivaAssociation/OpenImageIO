@@ -8,12 +8,12 @@
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	2.3.6.0
-Release:	1
+Version:	2.3.7.0
+Release:	0
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
-Source0:	https://github.com/OpenImageIO/oiio/archive/v%{version}/oiio-%{version}-dev.tar.gz
+Source0:	https://github.com/OpenImageIO/oiio/archive/v%{version}/oiio-%{version}-beta.tar.gz
 Patch0:		oiio-2.2.8.0-missing-include.patch
 Patch1:		oiio-find-current-tbb.patch
 Patch2:		oiio-2.3.6-dont-confuse-cmake-depgen.patch
