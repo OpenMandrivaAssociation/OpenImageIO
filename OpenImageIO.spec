@@ -95,7 +95,7 @@ Provides:	%{name}-devel = %{version}-%{release}
 Development files for %{name} library.
 
 %prep
-%autosetup -p1 -n oiio-%{version}-dev
+%autosetup -p1 -n oiio-%{version}-beta
 sed -i -e '/list.*APPEND.*cli_tools.*iv/d' src/doc/CMakeLists.txt
 
 # Remove bundled pugixml
