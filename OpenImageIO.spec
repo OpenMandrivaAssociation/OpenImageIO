@@ -139,14 +139,12 @@ export CXX=g++
 
 %files -n %{libname}
 %{_libdir}/libOpenImageIO.so.%{major}*
-#{_libdir}/libOpenImageIO-C.so.%{major}*
 
 %files -n %{utillibname}
 %{_libdir}/libOpenImageIO_Util.so.%{major}*
 
 %files -n %{devname}
 %{_libdir}/libOpenImageIO.so
-%{_libdir}/libOpenImageIO-C.so
 %{_libdir}/libOpenImageIO_Util.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/OpenImageIO.pc
