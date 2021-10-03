@@ -149,4 +149,4 @@ export CXX=g++
 %{_includedir}/*
 %{_libdir}/pkgconfig/OpenImageIO.pc
 %{_libdir}/cmake/OpenImageIO/*
-%{_datadir}/cmake/Modules/FindOpenImageIO.cmake
+#{_datadir}/cmake/Modules/FindOpenImageIO.cmake
