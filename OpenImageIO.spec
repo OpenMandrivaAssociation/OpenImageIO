@@ -8,12 +8,13 @@
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	2.3.8.0
+Version:	2.3.9.1
 Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
 Source0:	https://github.com/OpenImageIO/oiio/archive/v%{version}/oiio-%{version}.tar.gz
+Source1:	https://github.com/Tessil/robin-map/archive/refs/tags/v0.6.3.tar.gz
 Patch0:		oiio-2.2.8.0-missing-include.patch
 Patch1:		oiio-find-current-tbb.patch
 Patch2:		oiio-2.3.6-dont-confuse-cmake-depgen.patch
@@ -97,6 +98,11 @@ Development files for %{name} library.
 %prep
 %autosetup -p1 -n oiio-%{version}
 sed -i -e '/list.*APPEND.*cli_tools.*iv/d' src/doc/CMakeLists.txt
+
+# If  this doesn't exist, cmake downloads it from git
+tar xf %{S:1}
+mkdir ext
+mv robin-map-* ext/robin-map
 
 # Remove bundled pugixml
 rm -f src/include/pugixml.hpp \
