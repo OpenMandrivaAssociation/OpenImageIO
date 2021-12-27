@@ -9,7 +9,7 @@
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
 Version:	2.3.10.1
-Release:	2
+Release:	3
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
@@ -31,6 +31,7 @@ BuildRequires:	git-core
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(OpenEXR)
+BuildRequires:	pkgconfig(Imath)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(libjpeg)
 BuildRequires:	pkgconfig(bzip2)
