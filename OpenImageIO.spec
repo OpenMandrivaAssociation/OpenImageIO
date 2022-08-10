@@ -8,7 +8,7 @@
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	2.3.17.0
+Version:	2.3.18.0
 Release:	1
 Group:		System/Libraries
 License:	BSD
@@ -18,6 +18,7 @@ Source1:	https://github.com/Tessil/robin-map/archive/refs/tags/v0.6.3.tar.gz
 Patch0:		oiio-2.2.8.0-missing-include.patch
 Patch1:		oiio-find-current-tbb.patch
 Patch2:		oiio-2.3.6-dont-confuse-cmake-depgen.patch
+Patch3:		oiio-2.3.18.0-detect-current-ffmpeg.patch
 
 BuildRequires:	cmake
 BuildRequires:  cmake(pybind11)
@@ -141,8 +142,7 @@ export CXX=g++
 %files
 %{_bindir}/*
 %{_xfontdir}/%{name}
-#{python3_sitearch}/OpenImageIO.so
-%{python3_sitearch}/OpenImageIO.cpython-*-*-linux-gnu.so
+%{python3_sitearch}/OpenImageIO
 
 %files -n %{libname}
 %{_libdir}/libOpenImageIO.so.%{major}*
