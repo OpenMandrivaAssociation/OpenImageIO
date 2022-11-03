@@ -17,7 +17,7 @@ Source0:	https://github.com/OpenImageIO/oiio/archive/v%{version}/oiio-%{version}
 Source1:	https://github.com/Tessil/robin-map/archive/refs/tags/v0.6.3.tar.gz
 Patch0:		oiio-2.2.8.0-missing-include.patch
 Patch1:		oiio-find-current-tbb.patch
-Patch2:		oiio-2.3.6-dont-confuse-cmake-depgen.patch
+#Patch2:		oiio-2.3.6-dont-confuse-cmake-depgen.patch
 
 BuildRequires:	cmake
 BuildRequires:  cmake(pybind11)
