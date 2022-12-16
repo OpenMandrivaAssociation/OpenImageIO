@@ -1,15 +1,16 @@
 %define _disable_ld_no_undefined 1
 
-%define major 2.3
-%define libname %mklibname %{name} %{major}
+%define major %(echo %{version} |cut -d. -f1-2)
+%define libname %mklibname %{name}
 %define devname %mklibname %{name} -d
-%define utillibname %mklibname %{name}_Util %{major}
+%define utillibname %mklibname %{name}_Util
+%define __requires_exclude cmake.*IlmBase
 %bcond_without	full
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	2.3.19.0
-Release:	2
+Version:	2.4.6.1
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
@@ -17,7 +18,6 @@ Source0:	https://github.com/OpenImageIO/oiio/archive/v%{version}/oiio-%{version}
 Source1:	https://github.com/Tessil/robin-map/archive/refs/tags/v0.6.3.tar.gz
 Patch0:		oiio-2.2.8.0-missing-include.patch
 Patch1:		oiio-find-current-tbb.patch
-Patch2:		oiio-2.3.6-dont-confuse-cmake-depgen.patch
 
 BuildRequires:	cmake
 BuildRequires:  cmake(pybind11)
