@@ -14,7 +14,7 @@ Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
-Source0:	https://github.com/OpenImageIO/oiio/archive/v%{version}/oiio-%{version}.tar.gz
+Source0:	https://github.com/OpenImageIO/oiio/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:	https://github.com/Tessil/robin-map/archive/refs/tags/v1.2.1.tar.gz
 Patch0:		oiio-2.2.8.0-missing-include.patch
 Patch1:		oiio-find-current-tbb.patch
@@ -97,7 +97,7 @@ Provides:	%{name}-devel = %{version}-%{release}
 Development files for %{name} library.
 
 %prep
-%autosetup -p1 -n oiio-%{version}
+%autosetup -p1 -n %{name}-%{version}
 sed -i -e '/list.*APPEND.*cli_tools.*iv/d' src/doc/CMakeLists.txt
 
 # If  this doesn't exist, cmake downloads it from git
