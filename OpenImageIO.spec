@@ -38,6 +38,7 @@ BuildRequires:	pkgconfig(bzip2)
 BuildRequires:	pkgconfig(libwebp)
 BuildRequires:	pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libunwind-llvm)
+BuildRequires:	pkgconfig(fmt)
 %if %{with full}
 BuildRequires:	qt5-devel
 BuildRequires:	qt5-platformtheme-gtk3
@@ -50,6 +51,7 @@ BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:	cmake(Qt6)
 BuildRequires:	cmake(Qt6Gui)
+BuildRequires:	cmake(Qt6Widgets)
 BuildRequires:	pkgconfig(OpenColorIO)
 BuildRequires:	pkgconfig(glew)
 BuildRequires:  pkgconfig(gl)
