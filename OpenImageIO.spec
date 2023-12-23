@@ -5,7 +5,7 @@
 %define devname %mklibname %{name} -d
 %define utillibname %mklibname %{name}_Util
 %define __requires_exclude cmake.*IlmBase
-%bcond_without	full
+%bcond_with	full
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
@@ -50,8 +50,11 @@ BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:	cmake(Qt6)
+BuildRequires:	cmake(Qt6Core)
 BuildRequires:	cmake(Qt6Gui)
+BuildRequires:	cmake(Qt6OpenGLWidgets)
 BuildRequires:	cmake(Qt6Widgets)
+BuildRequires:	qt6-qtbase-theme-gtk3
 BuildRequires:	pkgconfig(OpenColorIO)
 BuildRequires:	pkgconfig(glew)
 BuildRequires:  pkgconfig(gl)
