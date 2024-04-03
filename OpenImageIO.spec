@@ -40,15 +40,8 @@ BuildRequires:	pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libunwind-llvm)
 BuildRequires:	pkgconfig(fmt)
 %if %{with full}
-BuildRequires:	qt5-devel
-BuildRequires:	qt5-platformtheme-gtk3
 BuildRequires:	cmake(ECM)
 BuildRequires:	pkgconfig(yaml-cpp)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5OpenGL)
-BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:	cmake(Qt6)
 BuildRequires:	cmake(Qt6Core)
 BuildRequires:	cmake(Qt6Gui)
