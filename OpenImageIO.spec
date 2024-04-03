@@ -9,12 +9,12 @@
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	2.5.9.0
-Release:	4
+Version:	2.5.10.1
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
-Source0:	https://github.com/OpenImageIO/oiio/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:	https://github.com/AcademySoftwareFoundation/OpenImageIO/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:	https://github.com/Tessil/robin-map/archive/refs/tags/v1.2.1.tar.gz
 Patch0:		oiio-2.2.8.0-missing-include.patch
 Patch1:		oiio-find-current-tbb.patch
