@@ -1,0 +1,57 @@
+From 121a8c43cb11a48831ca3b50a4bb9dc0e9198c82 Mon Sep 17 00:00:00 2001
+From: Larry Gritz <lg@larrygritz.com>
+Date: Thu, 28 Aug 2025 13:56:41 -0700
+Subject: [PATCH] build: ffmpeg 8 support
+
+* Try a build against ffmpeg 8 -- seems to work out of the box, so
+  document that we support that version in INSTALL.md.
+* Augment FindFFmpeg.cmake to correctly identify 7.1 and 8.0 by the
+  very non-intuitive versioning scheme of ffmpeg's headers.
+* Add a FFMPEG_EXTRA_LIBRARIES variable to FindFFmpeg.cmake to allow
+  us to easily inject extra library dependencies (coincidentally, I
+  need this at work to force it to use static libraries).
+
+Signed-off-by: Larry Gritz <lg@larrygritz.com>
+---
+ INSTALL.md                         | 2 +-
+ src/cmake/modules/FindFFmpeg.cmake | 7 ++++++-
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/INSTALL.md b/INSTALL.md
+index c19abf565f..7c5abc63b3 100644
+--- a/INSTALL.md
++++ b/INSTALL.md
+@@ -49,7 +49,7 @@ NEW or CHANGED MINIMUM dependencies since the last major release are **bold**.
+  * If you want support for camera "RAW" formats:
+      * LibRaw >= 0.20 (tested though 0.21.4 and master)
+  * If you want support for a wide variety of video formats:
+-     * ffmpeg >= 4.0 (tested through 7.1)
++     * ffmpeg >= 4.0 (tested through 8.0)
+  * If you want support for jpeg 2000 images:
+      * OpenJpeg >= 2.0 (tested through 2.5.3; we recommend 2.4 or higher
+        for multithreading support)
+diff --git a/src/cmake/modules/FindFFmpeg.cmake b/src/cmake/modules/FindFFmpeg.cmake
+index c49e9623f8..ea73e7b505 100644
+--- a/src/cmake/modules/FindFFmpeg.cmake
++++ b/src/cmake/modules/FindFFmpeg.cmake
+@@ -73,7 +73,11 @@ if (FFMPEG_INCLUDES)
+        REGEX "^#define LIBAVCODEC_VERSION_MICRO .*$")
+   string (REGEX MATCHALL "[0-9]+[.0-9]+" LIBAVCODEC_VERSION_MICRO "${TMP}")
+   set (LIBAVCODEC_VERSION "${LIBAVCODEC_VERSION_MAJOR}.${LIBAVCODEC_VERSION_MINOR}.${LIBAVCODEC_VERSION_MICRO}")
+-  if (LIBAVCODEC_VERSION VERSION_GREATER_EQUAL 61.3.100)
++  if (LIBAVCODEC_VERSION VERSION_GREATER_EQUAL 62.11.100)
++      set (FFMPEG_VERSION 8.0)
++  elseif (LIBAVCODEC_VERSION VERSION_GREATER_EQUAL 61.19.101)
++      set (FFMPEG_VERSION 7.1)
++  elseif (LIBAVCODEC_VERSION VERSION_GREATER_EQUAL 61.3.100)
+       set (FFMPEG_VERSION 7.0)
+   elseif (LIBAVCODEC_VERSION VERSION_GREATER_EQUAL 60.31.102)
+       set (FFMPEG_VERSION 6.1)
+@@ -130,6 +134,7 @@ if (FFmpeg_FOUND)
+       ${FFMPEG_LIBAVFORMAT}
+       ${FFMPEG_LIBAVUTIL}
+       ${FFMPEG_LIBSWSCALE}
++      ${FFMPEG_EXTRA_LIBRARIES}
+     )
+ endif ()
+ 
