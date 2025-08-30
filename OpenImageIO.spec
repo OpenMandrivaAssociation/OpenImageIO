@@ -9,8 +9,8 @@
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	2.5.19.0
-Release:	4
+Version:	3.0.9.1
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
@@ -18,6 +18,8 @@ Source0:	https://github.com/AcademySoftwareFoundation/OpenImageIO/archive/v%{ver
 Source1:	https://github.com/Tessil/robin-map/archive/refs/tags/v1.2.1.tar.gz
 Patch0:		oiio-2.2.8.0-missing-include.patch
 Patch1:		oiio-find-current-tbb.patch
+# FFMPEG 8.0 support
+Patch2:		https://patch-diff.githubusercontent.com/raw/AcademySoftwareFoundation/OpenImageIO/pull/4870.patch
 
 BuildRequires:	cmake
 BuildRequires:  cmake(pybind11)
