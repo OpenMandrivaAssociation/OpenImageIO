@@ -5,7 +5,7 @@
 %define devname %mklibname %{name} -d
 %define utillibname %mklibname %{name}_Util
 %define __requires_exclude cmake.*IlmBase
-%bcond_without	full
+%bcond_with	full
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
