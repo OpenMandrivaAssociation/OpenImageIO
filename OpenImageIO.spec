@@ -19,7 +19,7 @@ Source1:	https://github.com/Tessil/robin-map/archive/refs/tags/v1.2.1.tar.gz
 Patch0:		oiio-2.2.8.0-missing-include.patch
 Patch1:		oiio-find-current-tbb.patch
 # FFMPEG 8.0 support
-Patch2:		https://patch-diff.githubusercontent.com/raw/AcademySoftwareFoundation/OpenImageIO/pull/4870.patch
+#Patch2:		https://patch-diff.githubusercontent.com/raw/AcademySoftwareFoundation/OpenImageIO/pull/4870.patch
 
 BuildRequires:	cmake
 BuildRequires:  cmake(pybind11)
