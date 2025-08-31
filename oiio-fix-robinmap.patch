@@ -1,0 +1,12 @@
+diff -up OpenImageIO-3.0.9.1/src/cmake/modules/FindRobinmap.cmake.omv~ OpenImageIO-3.0.9.1/src/cmake/modules/FindRobinmap.cmake
+--- OpenImageIO-3.0.9.1/src/cmake/modules/FindRobinmap.cmake.omv~	2025-08-31 23:07:29.748077779 +0200
++++ OpenImageIO-3.0.9.1/src/cmake/modules/FindRobinmap.cmake	2025-08-31 23:07:52.075731883 +0200
+@@ -10,7 +10,7 @@
+ # ROBINMAP_FOUND - true if robin-map was found.
+ 
+ find_path (ROBINMAP_INCLUDE_DIR tsl/robin_map.h
+-           HINTS "${PROJECT_SOURCE_DIR}/ext/robin-map"
++           HINTS "${PROJECT_SOURCE_DIR}/ext/robin-map/include"
+            )
+ 
+ # Support the REQUIRED and QUIET arguments, and set ROBINMAP_FOUND if found.
