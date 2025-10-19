@@ -9,7 +9,7 @@
 
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
-Version:	3.0.9.1
+Version:	3.1.6.2
 Release:	1
 Group:		System/Libraries
 License:	BSD
@@ -18,7 +18,7 @@ Source0:	https://github.com/AcademySoftwareFoundation/OpenImageIO/archive/v%{ver
 Source1:	https://github.com/Tessil/robin-map/archive/refs/tags/v1.4.0.tar.gz
 Patch0:		oiio-2.2.8.0-missing-include.patch
 Patch1:		oiio-find-current-tbb.patch
-Patch2:		https://github.com/AcademySoftwareFoundation/OpenImageIO/pull/4870.patch
+#Patch2:		https://github.com/AcademySoftwareFoundation/OpenImageIO/pull/4870.patch
 Patch3:		oiio-fix-robinmap.patch
 
 BuildRequires:	cmake
