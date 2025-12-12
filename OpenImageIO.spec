@@ -21,7 +21,17 @@ Patch1:		oiio-find-current-tbb.patch
 #Patch2:		https://github.com/AcademySoftwareFoundation/OpenImageIO/pull/4870.patch
 Patch3:		oiio-fix-robinmap.patch
 
-BuildRequires:	cmake
+BuildSystem:	cmake
+BuildOption:	-Wno-dev
+BuildOption:	-DTBB_INCLUDE_DIR:PATH=%{_includedir}/oneapi
+BuildOption:	-DCMAKE_SKIP_RPATH:BOOL=TRUE
+BuildOption:	-DPYLIB_INSTALL_DIR:PATH=%{python_sitearch}
+BuildOption:	-DPYTHON_VERSION=%{pyver}
+BuildOption:	-DINCLUDE_INSTALL_DIR:PATH=%{_includedir}/%{name}
+BuildOption:	-DINSTALL_DOCS:BOOL=OFF
+BuildOption:	-DSTOP_ON_WARNING=OFF
+BuildOption:	-DUSE_EXTERNAL_PUGIXML:BOOL=ON
+BuildOption:	-DOpenGL_GL_PREFERENCE=GLVND
 BuildRequires:  cmake(pybind11)
 BuildRequires:	txt2man
 BuildRequires:	boost-devel
@@ -99,8 +109,7 @@ Provides:	%{name}-devel = %{version}-%{release}
 %description -n %{devname}
 Development files for %{name} library.
 
-%prep
-%autosetup -p1 -n %{name}-%{version}
+%prep -a
 sed -i -e '/list.*APPEND.*cli_tools.*iv/d' src/doc/CMakeLists.txt
 
 # If  this doesn't exist, cmake downloads it from git
@@ -115,31 +124,6 @@ rm -f src/include/pugixml.hpp \
 
 # Remove bundled tbb
 rm -rf src/include/tbb
-
-%build
-%ifarch %{ix86}
-# Because of incompatibility between boost-atomic 1.67 headers and clang 7.0:
-# /usr/include/boost/atomic/detail/ops_gcc_x86_dcas.hpp:163:21: error: address argument to atomic builtin cannot be const-qualified
-export CC=gcc
-export CXX=g++
-%endif
-
-%cmake \
-	-Wno-dev \
-	-DTBB_INCLUDE_DIR:PATH=%{_includedir}/oneapi \
-	-DCMAKE_SKIP_RPATH:BOOL=TRUE \
-	-DPYLIB_INSTALL_DIR:PATH=%{python3_sitearch} -DPYTHON_VERSION=%{py3_ver} \
-	-DINCLUDE_INSTALL_DIR:PATH=/usr/include/%{name} \
-	-DINSTALL_DOCS:BOOL=OFF \
-	-DSTOP_ON_WARNING=OFF \
-	-DUSE_EXTERNAL_PUGIXML:BOOL=ON \
-	-DOpenGL_GL_PREFERENCE=GLVND \
-	../
-
-%make_build
-
-%install
-%make_install -C build
 
 %files
 %{_bindir}/*
