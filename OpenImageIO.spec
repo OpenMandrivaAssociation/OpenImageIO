@@ -10,7 +10,7 @@
 Summary:	Library for reading and writing images
 Name:		OpenImageIO
 Version:	3.1.16.0
-Release:	4
+Release:	5
 Group:		System/Libraries
 License:	BSD
 Url:		https://sites.google.com/site/openimageio/home
@@ -31,6 +31,7 @@ BuildOption:	-DINCLUDE_INSTALL_DIR:PATH=%{_includedir}/%{name}
 BuildOption:	-DINSTALL_DOCS:BOOL=OFF
 BuildOption:	-DSTOP_ON_WARNING=OFF
 BuildOption:	-DUSE_EXTERNAL_PUGIXML:BOOL=ON
+BuildOption:	-DINTERNALIZE_FMT=OFF
 BuildOption:	-DOpenGL_GL_PREFERENCE=GLVND
 BuildRequires:  cmake(pybind11)
 BuildRequires:	txt2man
