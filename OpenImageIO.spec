@@ -42,7 +42,7 @@ BuildRequires:	pugixml-devel
 BuildRequires:	tiff-devel
 BuildRequires:	git-core
 BuildRequires:	pkgconfig(libpng)
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(OpenEXR)
 BuildRequires:	pkgconfig(Imath)
 BuildRequires:	pkgconfig(zlib)
